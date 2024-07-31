@@ -1,0 +1,12 @@
+.credit-footer {
+      color: white;
+      font-size:10px;
+    }
+
+.credit-footer a {
+      color: yellow; /* Change hyperlink color to red */
+    }
+
+.primary-solid-btn {
+    color: #005354 !important;
+    }

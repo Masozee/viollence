@@ -1,0 +1,297 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Centre for Strategic and International Studies" />
+    <meta name="description" content="CVEW Dataset is a comprehensive monitoring tool and early warning system for collective violence and conflict in Indonesia.">
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Document title -->
+    <title>CVEW - Collective Violence Early Warning.</title>
+    <!-- Stylesheets & Fonts -->
+    <link href="{% static 'css/plugins.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-RNSY7QC7K1');
+        </script>
+
+
+
+
+</head>
+
+<body class="boxed-simple">
+
+
+    <!-- Body Inner -->
+    <div class="body-inner">
+        <!-- Header -->
+        <header id="header" class="header-modern">
+            <div class="header-inner">
+                <div class="container">
+                    <!--Logo-->
+                    <div id="logo">
+                        <a href="{% url 'home' %}">
+                            <span class="logo-default">CVEW</span>
+                            <span class="logo-dark">CVEW</span>
+                        </a>
+                    </div>
+                    <!--End: Logo-->
+                    <div class="header-extras">
+                        <ul>
+                            
+                            <li>
+                                <div class="p-dropdown"> <a href="#"><i class="icon-globe"></i><span>EN</span></a>
+                                    <ul class="p-dropdown-content">
+                                        <li><a href="{% url 'home_id' %}">Indonesia</a></li>
+                                        <li><a href="{% url 'home_id' %}">English</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <!--Navigation Resposnive Trigger-->
+                    <div id="mainMenu-trigger">
+                        <a class="lines-button x"><span class="lines"></span></a>
+                    </div>
+                    <!--end: Navigation Resposnive Trigger-->
+                    <!--Navigation-->
+                    <div id="mainMenu">
+                        <div class="container">
+                            <nav>
+                                <ul>
+                                    <li><a href="{% url 'home' %}" class="gld">CSIS Collective Violence Early Warning Dataset</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!--end: Navigation-->
+                </div>
+            </div>
+        </header>
+        <!-- end: Header -->
+
+        <!-- WELCOME -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class='tableauPlaceholder' id='viz1678334488586' style='position: relative'>
+                            <noscript>
+                                <a href='#'>
+                                    <img alt='A1 | Beranda ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;IndonesiaCollectiveViolenceEarlyWarningSystemCVEWS10&#47;A1Beranda_1&#47;1_rss.png' style='border: none' />
+                                </a>
+                            </noscript>
+                            <object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                                <param name='embed_code_version' value='3' /> 
+                                <param name='site_root' value='' />
+                                <param name='name' value='IndonesiaCollectiveViolenceEarlyWarningSystemCVEWS10&#47;A1Beranda_1' />
+                                <param name='tabs' value='no' />
+                                <param name='toolbar' value='yes' />
+                                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;IndonesiaCollectiveViolenceEarlyWarningSystemCVEWS10&#47;A1Beranda_1&#47;1.png' /> 
+                                <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' />
+                                <param name='display_count' value='yes' /><param name='language' value='en-US' />
+                            </object>
+                        </div>                
+                        <script type='text/javascript'>                    
+                            var divElement = document.getElementById('viz1678334488586');                    
+                            var vizElement = divElement.getElementsByTagName('object')[0];                    
+                            vizElement.style.width='1420px';vizElement.style.height='836px';                    
+                            var scriptElement = document.createElement('script');                    
+                            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+                            vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+                        </script>    
+                    </div>
+                    
+                </div>
+                
+                <div class="seperator"></div>
+                <!-- Portfolio -->
+                <div id="portfolio" class="grid-layout portfolio-3-columns" data-margin="20">
+                    <!-- portfolio item -->
+                    <div class="portfolio-item img-zoom">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="https://newsletter.csis.or.id/cvew"><img src="{% static 'images/dataset.png' %}" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="https://newsletter.csis.or.id/cvew">
+                                    <h3>Download the Dataset</h3>
+                                    <span>in CSV</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+                    <!-- portfolio item -->
+                    <div class="portfolio-item img-zoom">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="{% static 'Policy_Brief_CVEW_English.pdf' %}"><img src="{% static 'images/report.png' %}" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="{% static 'Policy_Brief_CVEW_English.pdf' %}">
+                                    <h3>Download the  Report</h3>
+                                    
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+                    <!-- portfolio item -->
+                    <div class="portfolio-item img-zoom">
+                        <div class="portfolio-item-wrap">
+                            <div class="portfolio-image">
+                                <a href="#"><img src="{% static 'images/codebook.png' %}" alt=""></a>
+                            </div>
+                            <div class="portfolio-description">
+                                <a href="{% static 'CVEW_Dataset_Codebook_English.pdf' %}">
+                                    <h3>Dataset Codebook</h3>
+                                    <span>and technical glossaries</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end: portfolio item -->
+                </div>
+            </div>
+        </section>
+        <!-- end: WELCOME -->
+
+        <!-- ACCORDION & TEXT -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>About the Project</h3>
+                        <div class="accordion toggle fancy clean">
+                            <div class="ac-item">
+                                <h4 class="ac-title">BACKGROUND</h4>
+                                <div class="ac-content">
+                                    <p>Findings from CSIS’ 2020 Study on the Establishment of National Network for Atrocities Prevention funded by APR2P notes that multiple stakeholders commonly view that having a violence monitoring and measuring mechanism
+                                        would be greatly beneficial to Indonesia’s atrocity prevention initiatives. This mechanism is especially crucial as Indonesia approaches 2024 when it would hold six simultaneous election--an event that risk increasing
+                                        social conflict due to the common use of identity narratives by running candidates as a shortcut to win political contestations. Unfortunately, Indonesia currently lack data on whether and how fast this risk of
+                                        conflict is growing as the country lacks a reliable violence monitoring tool that can be used as a risk indicator.</p>
+                                    <p>Up until 2014, Indonesia could rely on the National Violence Monitoring System (NVMS) as this monitoring tool. Built by the World Bank with the support of The Habibie Center and funding from the Republic of Korea, NVMS
+                                        aggregates news from various local medias to provide stakeholders the first comprehensive and detailed database on violence in Indonesia. The NVMS was officially handed over to the Coordinating Ministry for Social
+                                        Welfare, and subsequently under President Widodo administration, it has been managed by the Coordinating Ministry for Human Development and Cultural Affairs. Unfortunately, due to various reasons, data collection
+                                        for the NVMS ended in March 2015.</p>
+                                    <p>Although various datasets exist to substitute NVMS as a comprehensive violence monitoring tool in Indonesia, all of them have their limitations. Internationally, there exist datasets such as the Armed Conflict Location
+                                        and Event Data (ACLED) or The Political Instability Task Force (PITF) Worldwide Atrocities Dataset which globally records multiple incidents of violence and political instability. However, these datasets are often
+                                        not specified enough to understand violence in Indonesia. Not only do they ignore violence data in local-level news sources, these databases also do not tailor their coding to identify crucial trends that Indonesia
+                                        needs in its early warning system––such as whether government intervention towards the incident exist and succeeded in deescalating the incident.</p>
+                                    <p>Nationally, there also exist datasets such as The Habibie Center’s Data Base Terorisme dan Kontra-Terorisme Indonesia (DETEKSI) that records terrorist attacks, KontraS’ internal database that records violence by Indonesia’s
+                                        security apparatus, or Wahid Foundation’s Laporan Kemerdekaan Beragama dan Berkeyakinan (KBB) that records religion-motivated violence. However, none of these datasets are individually comprehensive enough in the
+                                        kinds of violence they record to act as a national early warning mechanism. Additionally, because each of these databases use different data collection and data coding methods, it is not possible for any analysis
+                                        to merge these data together and develop a single comprehensive assessment.</p>
+                                    <p>Seeing the lack of a comprehensive violence monitoring database and in accordance with one of the key findings in CSIS’ 2020 study, it is of utmost importance to revive and revamp the NVMS so Indonesia would have a
+                                        comprehensive data on violent conflicts to serve as the basis for the Network’s to plan its work. This will be crucial to update Indonesia’s potential conflict areas and enable stakeholders to periodically check
+                                        on the possible escalation of risk factors. Having the monitoring data would also assist the government and other stakeholders to evaluate, further plan, and implement the National Action Plan (NAP) on Social Conflict
+                                        Management (2014) and Prevention of Extremism (2021).</p>
+                                </div>
+                            </div>
+                            <div class="ac-item  ">
+                                <h5 class="ac-title">PURPOSE</h5>
+                                <div class="ac-content">This project aims to develop a <strong>Collective Violence Early Warning Database</strong> to act as early warning mechanism by capturing incidents of violence across all provinces in Indonesia and analyzing data on various
+                                    aspects of these violence using national and local news sources. This monitoring system will collect, categorize, and visualize data according to the UN Framework of Analysis for Atrocity Crimes –– to assess the existence
+                                    and prevalence of common and specific risk factors––and Indonesia’s existing regulations on the protection on human rights, conflict preventions, and their NAPs––to assess how well these regulations are implemented
+                                    to prevent violence incidents.</div>
+                            </div>
+                            <div class="ac-item">
+                                <h5 class="ac-title">ACTIVITIES</h5>
+                                <div class="ac-content">
+                                    <p>To develop the Collective Violence Early Warning Database, the project will employ a team consisting of one lead researcher and two researchers from the Centre for Strategic and International Studies (CSIS) Jakarta.
+                                        CSIS will also employ the help of data entry personnel to collect and code data.</p>
+                                    <p>The team will develop this project in four phases of activities. For the first stage, the project will build a codebook and data collection system that details the definitions, variables, and categories of information
+                                        that the database will record. Then in the second stage, the project will begin its data collection process to create a database on violent incidents in Indonesia sourced from online, local, reputable media (Kompas,
+                                        Jawa Pos group, and various local newspapers). This database will record violence between January 2019 and December 2021.</p>
+                                    <p>In the third stage, once the data collection has recorded at least one year’s worth of violence, analysis and visualization of the data will be made to identify the month-to-month trend of violence in Indonesia which
+                                        will be shared with stakeholders of atrocities prevention to open opportunities for them to utilize the monitoring data for their work. The fourth stage of the project is to nationally launch the CVEW along with
+                                        the analysis of the data done by CSIS to the public.</p>
+                                </div>
+                            </div>
+                            <div class="ac-item ac-active">
+                                <h5 class="ac-title">CONTACT</h5>
+                                <div class="ac-content">
+                                    <p>Questions related to the dataset can be addressed to:</p>
+                                    <p><b>Alif Satria.</b> Researcher, Department of Politics and Social Change, Centre for Strategic and International Studies</p>
+                                    <p>alif.satria@csis.or.id</p>
+                                </div>
+                            </div>
+                            <div class="ac-item">
+                                <h5 class="ac-title">SUGGESTED CITATION</h5>
+                                <div class="ac-content">
+                                    <p>Lina Alexandra, Fitriani, dan Alif Satria, “Collective Violence Early 
+                                        Warning (CVEW) Dataset,” CSIS Indonesia, (2021).</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <h3>Reviving National Violence Database as Early-Warning Mechanism for Atrocities Prevention in Indonesia</h3>
+                        <p>Despite the absence of any major atrocity case, Indonesia is host to several concerning risk factors. The prevalence of intolerant acts against minority groups, extremist groups, economic and social inequalities, and records of
+                            past human rights abuses are among the risks that need to be seriously monitored for them not to escalate.</p>
+                        <p>As atrocity does not happen overnight, preventing these risks’ escalation at the earliest stage is key. In this regard, monitoring trends on the volume and forms of violence happening across Indonesia would be crucial to provide
+                            stakeholders early warning notice of possible escalation and increasing their capacity to better and more quickly perform atrocities prevention.</p>
+                        <div class="row">
+                            <div class="seperator"></div>
+                            <div class="col-lg-4">
+                                <a href="https://csis.or.id"><img src="{% static 'images/csis.png' %}" class="img-fluid m-300" alt=""></a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="https://appap.group.uq.edu.au/"><img src="{% static 'images/appap.png' %}" class="img-fluid m-300" alt=""></a>
+                            </div>
+                            <div class="col-lg-4">
+                                <a href="https://r2pasiapacific.org/"><img src="{% static 'images/apr2p.jpg' %}" class="img-fluid m-300" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end: ACCORDION & TEXT -->
+
+        <div class="seperator m-b-0"></div>
+
+        <!-- FOOTER -->
+        <footer id="footer">
+            <div class="copyright-content">
+                <div class="container">
+                    <div class="copyright-text text-center">© 2022 CVEW - Collective Violence Early Warning Dataset - <a href="https://www.csis.or.id" target="_blank" rel="noopener">CSIS Indonesia</a> </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end: FOOTER -->
+
+    </div>
+    <!-- end: Body Inner -->
+
+    <!-- Scroll top -->
+    <a id="scrollTop" class="scroll-to" href="body"><i class="icon-chevron-up"></i><i class="icon-chevron-up"></i></a>
+
+    <!--Plugins-->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+
+    <!--Template functions-->
+    <script src="{% static 'js/functions.js' %}"></script>
+
+    
+</body>
+
+
+</html>

@@ -1,0 +1,10 @@
+asgiref
+diff-match-patch
+Django
+django-import-export
+djangorestframework
+et-xmlfile
+openpyxl
+python-decouple
+sqlparse
+tablib
