@@ -1,4 +1,5 @@
-FROM python:3.10
+# Use an official Python runtime as a parent image
+FROM python:3.9
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -19,4 +20,4 @@ COPY . /code/
 RUN python manage.py collectstatic --noinput
 
 # Run gunicorn
-CMD gunicorn core.wsgi:application --bind 0.0.0.0:8000
+CMD ["gunicorn", "--bind", "0.0.0.0:7000", "core.wsgi:application"]
