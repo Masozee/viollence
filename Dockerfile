@@ -1,5 +1,4 @@
-# Use an official Python runtime as a parent image
-FROM python:3.9
+FROM python:3.12
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -12,6 +11,7 @@ WORKDIR /code
 COPY requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN pip install granian
 
 # Copy project
 COPY . /code/
@@ -19,5 +19,5 @@ COPY . /code/
 # Collect static files
 RUN python manage.py collectstatic --noinput
 
-# Run gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:7000", "core.wsgi:application"]
+# Run granian
+CMD ["granian", "--interface", "asgi", "--host", "0.0.0.0", "--port", "7000", "core.asgi:application"]

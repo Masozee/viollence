@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ia#93t+4!o7o#99drm+1*3vycnxhst(b@4=w5n&87=*3+^or51
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['tools.csis.or.id', 'violence.csis.or.id']
 
 
 # Application definition
