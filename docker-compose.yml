@@ -20,7 +20,7 @@ services:
       - media_volume:/code/media
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
-      - "80:80"
+      - "7000:7000"
     depends_on:
       - web
 
