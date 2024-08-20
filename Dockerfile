@@ -20,4 +20,4 @@ COPY . /code/
 RUN python manage.py collectstatic --noinput
 
 # Run granian
-CMD ["granian", "--interface", "asgi", "--host", "0.0.0.0", "--port", "7000", "core.asgi:application"]
+CMD ["granian", "--interface", "wsgi", "--host", "0.0.0.0", "--port", "7000", "core.wsgi:application"]
