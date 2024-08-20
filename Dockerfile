@@ -1,4 +1,5 @@
-FROM python:3.12
+# Use an official Python runtime as a parent image
+FROM python:3.9
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -16,8 +17,7 @@ RUN pip install granian
 # Copy project
 COPY . /code/
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# No need to run collectstatic here as files are already collected
 
 # Run granian
-CMD ["granian", "--interface", "wsgi", "--host", "0.0.0.0", "--port", "7000", "core.wsgi:application"]
+CMD ["granian", "--interface", "asgi", "--host", "0.0.0.0", "--port", "7000", "core.asgi:application"]
