@@ -137,11 +137,13 @@ class ProvincialIncidentCountView(View):
                     population = None
 
                 if incident_count > 0 or population is not None:
+                    incident_ratio = self.calculate_incident_ratio(incident_count, population)
                     result.append({
                         'province_name': province.name,
                         'province_area_code': province.area_code,
                         'incident_count': incident_count,
-                        'population': population
+                        'population': population,
+                        'incident_ratio': incident_ratio
                     })
 
             result.sort(key=lambda x: x['province_name'])
@@ -158,3 +160,8 @@ class ProvincialIncidentCountView(View):
         sub_provinces = region.sub_provinces.all()
         sub_count = sum(self.count_incidents_recursive(sub_province) for sub_province in sub_provinces)
         return direct_count + sub_count
+
+    def calculate_incident_ratio(self, incident_count, population):
+        if population is not None and population > 0:
+            return round((incident_count / population) * 1000000, 5)
+        return None

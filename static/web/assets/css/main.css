@@ -51115,8 +51115,8 @@ strong, b {
 
 /* line 187, src/assets/scss/custom/_style.scss */
 .gradient-bg {
-  background: -webkit-gradient(linear, left top, right top, from(#4d8787), to(#005354)) !important;
-  background: linear-gradient(90deg, #4d8787, #005354) !important;
+  background: -webkit-gradient(linear, left top, right top, from(#6665e5), to(#6665e5)) !important;
+  background: linear-gradient(90deg, #6665e5, #6665e5) !important;
 }
 
 /* line 191, src/assets/scss/custom/_style.scss */
@@ -51431,8 +51431,8 @@ select.form-control.has-value {
 
 /* line 442, src/assets/scss/custom/_style.scss */
 .bg-transparent.affix {
-  background: -webkit-gradient(linear, left top, right top, from(#4d8787), to(#4d8787)) !important;
-  background: linear-gradient(90deg, #4d8787, #4d8787) !important;
+  background: -webkit-gradient(linear, left top, right top, from(#6665e5), to(#6665e5)) !important;
+  background: linear-gradient(90deg, #6665e5, #6665e5) !important;
 }
 
 /*header topbar*/
