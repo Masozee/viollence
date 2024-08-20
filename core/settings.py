@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ia#93t+4!o7o#99drm+1*3vycnxhst(b@4=w5n&87=*3+^or51
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['tools.csis.or.id', 'violence.csis.or.id']
+ALLOWED_HOSTS = ['tools.csis.or.id', 'violence.csis.or.id', 'localhost']
 
 
 # Application definition
@@ -143,10 +143,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/code/static'  # This matches the Docker mount point
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
+# Media files (User uploaded files)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/code/media'  # Adjust if needed
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
