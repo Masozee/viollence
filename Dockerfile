@@ -22,8 +22,5 @@ RUN pip install granian
 # Copy project
 COPY . /code/
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
-
 # Run the application
 CMD ["granian", "--interface", "asgi", "--host", "0.0.0.0", "--port", "7000", "core.asgi:application"]
