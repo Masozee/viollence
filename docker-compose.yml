@@ -6,8 +6,8 @@ services:
     command: granian --interface asgi --host 0.0.0.0 --port 7000 core.asgi:application
     volumes:
       - .:/code
-      - ./static:/code/static  # Mount the static folder
-      - ./media:/code/media  # Mount the media folder if you have one
+      - /home/rahmat/viollence/static:/code/static  # Corrected path
+      - /home/rahmat/viollence/media:/code/media  # Adjust if needed
     ports:
       - "7000:7000"
     environment:
