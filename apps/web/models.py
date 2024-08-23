@@ -1,8 +1,18 @@
+import logging
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.conf import settings
+from django_ckeditor_5.fields import CKEditor5Field
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from PyPDF2 import PdfReader
+from PIL import Image
+import io
+import os
+
+logger = logging.getLogger(__name__)
 
 class Category(models.Model):
     title = models.CharField(max_length=300)
@@ -74,13 +84,13 @@ class Regions(models.Model):
         verbose_name_plural = "Provinisi/Kabupaten/Kota"
 
 class Incidents(models.Model):
-    incident_id = models.CharField(max_length=10)
+    incident_id = models.CharField(max_length=20)
     incident_date = models.DateField()
     location = models.ForeignKey('Regions', null=True, blank=True, related_name='incident_loc', on_delete=models.CASCADE)
     coder = models.ForeignKey(User, null=True, blank=True, related_name='incidents_coded', on_delete=models.SET_NULL)
     verificator = models.ForeignKey(User, null=True, blank=True, related_name='incidents_verified',
                                     on_delete=models.SET_NULL)
-    image = models.ImageField(upload_to="incidents/")
+    image = models.ImageField(upload_to="incidents/", null=True, blank=True)
     link = models.URLField(blank=True, null=True)
     category = models.ManyToManyField('Options', limit_choices_to={'category': 2}, related_name='Violence_category')
     incident_relation = models.ForeignKey('self', null=True, blank=True, related_name='incident_relations', on_delete=models.CASCADE)
@@ -210,3 +220,74 @@ class DataValue(models.Model):
         verbose_name = "Data Value"
         verbose_name_plural = "Data Value"
 
+
+class Publications(models.Model):
+    title = models.CharField(max_length=300)
+    slug = models.SlugField(default='', editable=False, max_length=550)
+    category = models.ForeignKey('Options', on_delete=models.CASCADE, limit_choices_to={'category':10})
+    img_cover = models.ImageField(upload_to='publications/cover/', blank=True)
+    img_credit = models.TextField(blank=True)
+    file = models.FileField(blank=True, upload_to='publications/doc/')
+    content = CKEditor5Field('Content', config_name='extends')
+    keterangan = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    visitor_count = models.PositiveIntegerField(default=0)
+    publish = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        value = self.title
+        self.slug = slugify(value, allow_unicode=True)
+
+        # First, save the model to ensure the file is saved
+        super().save(*args, **kwargs)
+
+        # Now, if we have a file but no cover, extract the cover
+        if self.file and not self.img_cover:
+            self.extract_cover()
+            # Save again to store the extracted cover
+            super().save(update_fields=['img_cover'])
+
+    def extract_cover(self):
+        try:
+            # Handle both saved and unsaved files
+            if hasattr(self.file, 'path'):
+                pdf = PdfReader(self.file.path)
+            else:
+                pdf = PdfReader(self.file)
+
+            # Get the first page
+            first_page = pdf.pages[0]
+
+            # Extract the cover image (assuming it's the first image on the first page)
+            for image_file_object in first_page.images:
+                cover = Image.open(io.BytesIO(image_file_object.data))
+
+                # Convert to RGB if it's not
+                if cover.mode != 'RGB':
+                    cover = cover.convert('RGB')
+
+                # Save the cover image
+                cover_io = io.BytesIO()
+                cover.save(cover_io, format='JPEG')
+                cover_file = ContentFile(cover_io.getvalue())
+
+                # Generate a filename for the cover image
+                cover_filename = f"cover_{os.path.splitext(os.path.basename(self.file.name))[0]}.jpg"
+
+                # Save the cover image to the img_cover field
+                self.img_cover.save(cover_filename, cover_file, save=False)
+                break  # We only need the first image
+        except Exception as e:
+            print(f"Error extracting cover: {str(e)}")
+
+    class Meta:
+        verbose_name = "Publications"
+        verbose_name_plural = "Publications"
+
+    @property
+    def get_url(self):
+        return f"/publication/{self.slug}"

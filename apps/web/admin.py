@@ -2,6 +2,8 @@ from django.contrib import admin
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 from .models import *
+from django.utils.html import format_html
+from django.db.models import Count
 
 # Define resource classes for each model
 class CategoryResource(resources.ModelResource):
@@ -147,3 +149,47 @@ class DataValueAdmin(ImportExportModelAdmin):
 # Register the admin classes with the associated models
 admin.site.register(DataName, DataNameAdmin)
 admin.site.register(DataValue, DataValueAdmin)
+
+
+class PublicationsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'created_at', 'updated_at', 'visitor_count', 'publish', 'display_cover')
+    list_filter = ('category', 'publish', 'created_at')
+    search_fields = ('title', 'content', 'keterangan')
+    readonly_fields = ('created_at', 'updated_at', 'visitor_count', 'slug')
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'slug', 'category', 'content')
+        }),
+        ('Media', {
+            'fields': ('file', 'img_cover', 'img_credit')
+        }),
+        ('Additional Information', {
+            'fields': ('keterangan', 'visitor_count', 'publish')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        })
+    )
+
+    def display_cover(self, obj):
+        if obj.img_cover:
+            return format_html('<img src="{}" width="50" height="50" />', obj.img_cover.url)
+        return "No cover"
+
+    display_cover.short_description = 'Cover'
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        queryset = queryset.annotate(
+            _category_count=Count('category', distinct=True),
+        )
+        return queryset
+
+    def category_count(self, obj):
+        return obj._category_count
+
+    category_count.admin_order_field = '_category_count'
+    category_count.short_description = 'Category Count'
+
+admin.site.register(Publications, PublicationsAdmin)

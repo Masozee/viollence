@@ -163,5 +163,55 @@ class ProvincialIncidentCountView(View):
 
     def calculate_incident_ratio(self, incident_count, population):
         if population is not None and population > 0:
-            return round((incident_count / population) * 1000000, 5)
+            return round((incident_count / population) * 10000, 3)
         return None
+
+
+class MonthlyIncidentCategoryView(View):
+    def get(self, request):
+        # Get all incident categories
+        categories = Options.objects.filter(category__id=2).values_list('id', 'title')
+        category_dict = {cat[0]: cat[1] for cat in categories}
+
+        incidents_by_month = Incidents.objects.values('incident_date')
+
+        # Annotate with incident count and category counts
+        annotations = {
+            'incident_count': Count('id'),
+        }
+        for cat_id, cat_name in category_dict.items():
+            annotations[f'category_{cat_id}'] = Count('category', filter=Q(category=cat_id))
+
+        incidents_by_month = incidents_by_month.annotate(**annotations)
+
+        formatted_response = {}
+        for incident in incidents_by_month:
+            date = incident['incident_date']
+            year = str(date.year)
+            month = date.month
+            month_name = calendar.month_name[month]
+
+            if year not in formatted_response:
+                formatted_response[year] = []
+
+            month_data = next((item for item in formatted_response[year] if item["month"] == month_name), None)
+            if month_data is None:
+                month_data = {
+                    'month': month_name,
+                    'incidents': 0,
+                }
+                for cat_name in category_dict.values():
+                    month_data[cat_name] = 0
+                formatted_response[year].append(month_data)
+
+            month_data['incidents'] += incident['incident_count']
+            for cat_id, cat_name in category_dict.items():
+                month_data[cat_name] += incident[f'category_{cat_id}']
+
+        for year in formatted_response:
+            formatted_response[year].sort(key=lambda x: list(calendar.month_name).index(x['month']))
+
+        response_list = [{'year': year, 'data': data} for year, data in formatted_response.items()]
+        response_list.sort(key=lambda x: x['year'], reverse=True)
+
+        return JsonResponse(response_list, safe=False)

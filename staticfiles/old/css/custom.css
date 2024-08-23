@@ -1,0 +1,21 @@
+/* 
+
+1. Add your custom Css styles below
+2. Place the this code in your template: 
+
+ <link href="css/custom.css" rel="stylesheet">
+
+*/
+
+
+/* dektop */
+
+
+/* mobile */
+
+@media (max-width: 767px) {
+    .m-300 {
+        max-width: 250px;
+        margin: auto;
+    }
+}

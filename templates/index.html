@@ -66,6 +66,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="section-heading">
+                            <h4>lorem ipsum</h4>
                             <p>
                                 Discover our latest publications, offering insights into key topics such as renewable energy, emission reduction strategies, and sustainable development.
                             </p>
@@ -91,9 +92,53 @@
 
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-3">
+                        <div class="section-heading">
+                            <h4>lorem ipsum</h4>
+                            <p>
+                                Discover our latest publications, offering insights into key topics such as renewable energy, emission reduction strategies, and sustainable development.
+                            </p>
+                        </div>
+
+                        <div class="row pt-20">
+                            <div class="col-md-12">
+                                <a href="" class="btn btn-success" style="width:100%;">Download JSON</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8">
                         <div id="container2" class="bg-gray" style="width: 100%; height: 600px;"></div>
                         <div id="fixed-tooltip"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="our-blog-section bg-gray">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="section-heading">
+                            <h4>lorem ipsum</h4>
+                            <p>
+                                Discover our latest publications, offering insights into key topics such as renewable energy, emission reduction strategies, and sustainable development.
+                            </p>
+                        </div>
+
+                        <div class="row pt-20">
+                            <div class="col-md-12">
+                                <a href="" class="btn btn-success" style="width:100%;">Download JSON</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-8">
+                        <div id="category-container" class="bg-gray" style="width: 100%; height: 600px;"></div>
+
                     </div>
                 </div>
             </div>
@@ -143,41 +188,47 @@
             </div>
         </section>
         <!--blog section end-->
-        <div id="faq" class="ptb-100 ">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-lg-8">
-                        <div class="section-heading mb-5">
-                            <h2>Frequently Asked Questions</h2>
-                            <p>Get quick answers to common questions about renewable energy, emission reduction, and sustainable development in our FAQ section. Find clear and concise explanations to help you understand key topics and initiatives.</p>
+        <section class="ptb-100">
+        <div class="container ">
+                    <h2>About</h2>
+                 </div>
+                <hr class="pb-100" style="border-top: 1px solid black;">
+        <div class="container">
+
+                <div id="faq" class="ptb-100 ">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8">
+                            <div class="section-heading mb-5">
+                                <h2>Frequently Asked Questions</h2>
+                                <p>Get quick answers to common questions about renewable energy, emission reduction, and sustainable development in our FAQ section. Find clear and concise explanations to help you understand key topics and initiatives.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 col-lg-12">
-                        <div id="accordion-one" class="accordion accordion-faq">
-                            {% for b in faq %}
-                            <div class="card mb-0">
-                                <a class="card-header collapsed" data-toggle="collapse" href="#collapse{{b.id}}">
-                                    <h6 class="mb-0 d-inline-block">{{b.title}}
-                                    </h6>
-                                </a>
-                                <div id="collapse{{b.id}}" class="collapse" data-parent="#accordion-one">
-                                    <div class="card-body">
-                                        <p>{{b.keterangan}}
-                                        </p>
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div id="accordion-one" class="accordion accordion-faq">
+                                {% for b in faq %}
+                                <div class="card mb-0">
+                                    <a class="card-header collapsed" data-toggle="collapse" href="#collapse{{b.id}}">
+                                        <h6 class="mb-0 d-inline-block">{{b.title}}
+                                        </h6>
+                                    </a>
+                                    <div id="collapse{{b.id}}" class="collapse" data-parent="#accordion-one">
+                                        <div class="card-body">
+                                            <p>{{b.keterangan}}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            {% endfor %}
+                                {% endfor %}
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
 
-
+        </section>
 
     </div>
 {% endblock %}
@@ -454,10 +505,12 @@
             map: geoJsonData
         },
         title: {
-            text: 'Indonesia Incident Ratio Map'
+            text: 'Indonesia Incident Ratio Map',
+            align: 'left'
         },
         subtitle: {
-            text: 'Incidents per 10,000 population'
+            text: 'Incidents per 10,000 population',
+            align: 'left'
         },
         mapNavigation: {
             enabled: true,
@@ -467,16 +520,16 @@
         },
         colorAxis: {
             min: 0,
-            max: maxRatio,
-            minColor: '#FFEBEE',
-            maxColor: '#B71C1C',
+            max: 0.02000,
+            minColor: '#FFFFFF',
+            maxColor: '#003399',
             stops: [
-                [0, '#FFEBEE'],
-                [0.2, '#FFCDD2'],
-                [0.4, '#EF9A9A'],
-                [0.6, '#E57373'],
-                [0.8, '#EF5350'],
-                [1, '#B71C1C']
+                [0, '#FFFFFF'],
+                [0.2, '#E6F0FF'],
+                [0.4, '#B3D1FF'],
+                [0.6, '#80B3FF'],
+                [0.8, '#4D94FF'],
+                [1, '#003399']
             ],
             labels: {
                 format: '{value:.5f}'
@@ -514,5 +567,114 @@
         }]
     });
 })();
+</script>
+
+<script>
+$(document).ready(function() {
+    let chartData;
+    let categoryChart;
+
+    // Fetch data from the API
+    $.getJSON('/api/incidents-by-category/', function(data) {
+        chartData = data;
+
+        // Populate year filter if it doesn't exist
+        const yearFilter = $('#yearFilter');
+        if (yearFilter.children().length === 0) {
+            chartData.forEach(yearData => {
+                yearFilter.append($('<option>', {
+                    value: yearData.year,
+                    text: yearData.year
+                }));
+            });
+        }
+
+        // Initial chart render
+        updateCategoryChart(chartData[0].year);
+
+        // Event listener for year filter change
+        yearFilter.on('change', function() {
+            updateCategoryChart($(this).val());
+        });
+    });
+
+    function updateCategoryChart(selectedYear) {
+        const yearData = chartData.find(data => data.year === selectedYear);
+
+        const categories = [];
+        const seriesData = {};
+
+        yearData.data.forEach(monthData => {
+            categories.push(monthData.month);
+            Object.keys(monthData).forEach(key => {
+                if (key !== 'month' && key !== 'incidents') {
+                    if (!seriesData[key]) {
+                        seriesData[key] = [];
+                    }
+                    seriesData[key].push(monthData[key]);
+                }
+            });
+        });
+
+        const series = Object.keys(seriesData).map(key => ({
+            name: key,
+            data: seriesData[key]
+        }));
+
+        // Create or update the chart
+        if (categoryChart) {
+            categoryChart.update({
+                xAxis: {
+                    categories: categories
+                },
+                series: series
+            });
+        } else {
+            categoryChart = Highcharts.chart('category-container', {
+                chart: {
+                    type: 'column'
+                },
+                title: {
+                    text: 'Monthly Incident Categories',
+                    align: 'left'
+                },
+                subtitle: {
+                    text: `Incident Types in ${selectedYear}`,
+                    align: 'left'
+                },
+                xAxis: {
+                    categories: categories,
+                    crosshair: true
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: 'Number of Incidents'
+                    }
+                },
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                },
+                tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+                    footerFormat: '</table>',
+                    shared: true,
+                    useHTML: true
+                },
+                plotOptions: {
+                    column: {
+                        pointPadding: 0.2,
+                        borderWidth: 0
+                    }
+                },
+                series: series
+            });
+        }
+    }
+});
 </script>
 {% endblock %}

@@ -7,6 +7,7 @@ urlpatterns = [
  #   path('incidents/province/', ProvincialIncidentCountView2, name='incidents-by-province'),
     path('data/<slug:slug>/', DataNameDetailView.as_view(), name='data-name-detail'),
     path('incident-counts/', ProvincialIncidentCountView.as_view(), name='incident-counts'),
+    path('incidents-by-category/', MonthlyIncidentCategoryView.as_view(), name='incidents_by_category'),
 
 ]
 

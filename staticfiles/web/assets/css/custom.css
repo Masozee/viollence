@@ -1,0 +1,12 @@
+.credit-footer {
+      color: white;
+      font-size:10px;
+    }
+
+.credit-footer a {
+      color: yellow; /* Change hyperlink color to red */
+    }
+
+.bg-main {
+   background-color: #6665e5;
+}
