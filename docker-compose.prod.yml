@@ -10,8 +10,8 @@ services:
       - .:/code
       - /home/rahmat/viollence/static:/code/static
       - /home/rahmat/viollence/media:/code/media
-    expose:
-      - "7000"
+    ports:
+      - "7000:7000"
     environment:
       - DJANGO_SETTINGS_MODULE=core.settings
       - DEBUG=False
