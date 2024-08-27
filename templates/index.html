@@ -488,7 +488,7 @@
 <script>
 (async () => {
     const [geoJsonData, apiData] = await Promise.all([
-        fetch('/static/indo.json').then(response => response.json()),
+        fetch('https://cdn.csis.or.id/violence/static/indo.json').then(response => response.json()),
         fetch('/api/incident-counts/').then(response => response.json())
     ]);
 
