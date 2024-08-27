@@ -129,10 +129,18 @@
                         </div>
 
                         <div class="row pt-20">
-                            <div class="col-md-12">
-                                <a href="" class="btn btn-success" style="width:100%;">Download JSON</a>
+                            <div class="col-md-6 mb-3">
+                                <a href="" class="btn btn-success" style="width:100%;">JSON</a>
                             </div>
-
+                            <div class="col-md-6 mb-3">
+                                <a href="" class="btn btn-danger" style="width:100%;">CSV</a>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <select id="incident-filter" class="form-select btn outline-btn">
+                                    <label for="incident-filter">Select Year:</label><br>
+                                    <option value="">Select Year</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-1"></div>
@@ -578,28 +586,31 @@ $(document).ready(function() {
     $.getJSON('/api/incidents-by-category/', function(data) {
         chartData = data;
 
-        // Populate year filter if it doesn't exist
-        const yearFilter = $('#yearFilter');
-        if (yearFilter.children().length === 0) {
-            chartData.forEach(yearData => {
-                yearFilter.append($('<option>', {
-                    value: yearData.year,
-                    text: yearData.year
-                }));
-            });
+        // Populate year filter
+        const incidentFilter = $('#incident-filter');
+        chartData.forEach(yearData => {
+            incidentFilter.append($('<option>', {
+                value: yearData.year,
+                text: yearData.year
+            }));
+        });
+
+        // Initial chart render with the first year
+        if (chartData.length > 0) {
+            updateCategoryChart(chartData[0].year);
         }
 
-        // Initial chart render
-        updateCategoryChart(chartData[0].year);
-
         // Event listener for year filter change
-        yearFilter.on('change', function() {
+        incidentFilter.on('change', function() {
             updateCategoryChart($(this).val());
         });
     });
 
     function updateCategoryChart(selectedYear) {
+        if (!selectedYear) return; // Don't update if no year is selected
+
         const yearData = chartData.find(data => data.year === selectedYear);
+        if (!yearData) return; // Don't update if year data is not found
 
         const categories = [];
         const seriesData = {};
@@ -627,7 +638,10 @@ $(document).ready(function() {
                 xAxis: {
                     categories: categories
                 },
-                series: series
+                series: series,
+                subtitle: {
+                    text: `Incident Types in ${selectedYear}`
+                }
             });
         } else {
             categoryChart = Highcharts.chart('category-container', {
