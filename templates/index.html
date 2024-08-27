@@ -488,8 +488,8 @@
 <script>
 (async () => {
     const [geoJsonData, apiData] = await Promise.all([
-        fetch('http://localhost:8000/static/indo.json').then(response => response.json()),
-        fetch('http://localhost:8000/api/incident-counts/').then(response => response.json())
+        fetch('/static/indo.json').then(response => response.json()),
+        fetch('/api/incident-counts/').then(response => response.json())
     ]);
 
     geoJsonData.features.forEach(feature => {
